@@ -16,7 +16,7 @@ exports.readDir = function(path, cb) {
 exports.readFile = function(file, cb) {
     try{
         const code = fs.readFileSync(file, 'utf-8');
-        cb && cb(code);
+        cb && cb(code, file);
     } catch(e) {
         console.log('文件读取错误');
         console.log(e);
