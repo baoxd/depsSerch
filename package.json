@@ -13,5 +13,11 @@
     "cli"
   ],
   "author": "baoxd",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "yargs": "^11.0.0"
+  },
+  "bin": {
+    "ds": "./bin/ds.js"
+  }
 }
