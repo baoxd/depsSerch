@@ -13,7 +13,7 @@ module.exports = function(yargs) {
                     type: 'string'
                 }).option('show', {
                     alias: 's',
-                    describe: '信息显示类型',
+                    describe: '信息显示类型, a: 显示所有；o: 是显示没有被依赖的文件',
                     type: 'string'
                 });
         })

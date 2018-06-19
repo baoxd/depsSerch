@@ -10,7 +10,7 @@ if (!command) {
     return;
 }
 if (command === 'ds') {
-    ds.search(argv.p);
+    ds.search(argv);
 } else {
     console.log('别的命令...');
 }

@@ -1,3 +1,7 @@
+const path = require('path');
+var ROOT_PATH = path.resolve(__dirname);
+var APP_PATH = path.resolve(ROOT_PATH, 'app');
+
 module.exports = function() {
     return {
         alias: {
