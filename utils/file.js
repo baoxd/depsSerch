@@ -16,9 +16,25 @@ exports.readDir = function(path, cb) {
 exports.readFile = function(file, cb) {
     try{
         const code = fs.readFileSync(file, 'utf-8');
-        cb && cb(code, file);
+        cb && cb(code);
     } catch(e) {
         console.log('文件读取错误');
         console.log(e);
     }
+}
+
+/**
+ * @param {*} dirs 
+ * @param {*} path 
+ */
+exports.isIgnorePath = function(dirs, path) {
+    let ret = false;
+    if (dirs.length > 0 && path) {
+        dirs.forEach(dir => {
+            if (path.indexOf(dir) >= 0) {
+                ret = true;
+            }
+        })
+    }
+    return ret;
 }
