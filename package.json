@@ -18,6 +18,6 @@
     "yargs": "^11.0.0"
   },
   "bin": {
-    "ds": "./bin/ds.js"
+    "coan": "./bin/coan.js"
   }
 }
