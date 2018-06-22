@@ -34,7 +34,7 @@ coan ds
 4. 示例
 
 ```
-coan ds -p . -a ./webpack.config.js -s 
+coan ds -p . -a ./webpack.config.js -s o
 ```
 
 ![./test/imgs/demo.jpg](./test/imgs/demo.jpg)
