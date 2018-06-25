@@ -38,3 +38,4 @@ exports.isIgnorePath = function(dirs, path) {
     }
     return ret;
 }
+

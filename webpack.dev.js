@@ -6,6 +6,6 @@ module.exports = function() {
         alias: {
             app: APP_PATH
         },
-
+        vendor: ['app/test/common.js'],
     };
 }
