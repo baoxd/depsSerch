@@ -1,4 +1,7 @@
 const fs = require('fs');
+const path = require('path');
+const ignorePaths = require('../lib/config').ignorePaths;
+
 /**
  * 文件夹
  * @param {*} path 
@@ -38,4 +41,40 @@ exports.isIgnorePath = function(dirs, path) {
     }
     return ret;
 }
+
+/**
+ * 获取路径下所有文件
+ * @param  {[type]} path [description]
+ * @return {[type]}      [description]
+ */
+exports.getAllFile = function(sourcepath) {
+    if (!sourcepath || exports.isIgnorePath(ignorePaths, sourcepath)) {
+        return [];
+    }
+    let ret = [];
+    const stat = fs.statSync(sourcepath);
+
+
+    if (stat.isFile()) {
+        ret.push(sourcepath);
+    } else if (stat.isDirectory()) {
+        exports.readDir(sourcepath, (files) => {
+            if (files && files.length > 0) {
+
+                files.forEach(file => {
+                    const currFilePath = path.join(sourcepath, file)
+                    const fileStat = fs.statSync(currFilePath);
+
+                    if (fileStat.isFile() && !exports.isIgnorePath(ignorePaths, sourcepath)) {
+                        ret.push(currFilePath);
+                    } else if (fileStat.isDirectory()) {
+                        ret = ret.concat(exports.getAllFile(currFilePath));
+                    }
+                })
+            }
+        })
+    }
+    return ret;
+}
+
 

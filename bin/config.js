@@ -21,6 +21,14 @@ module.exports = function(yargs) {
                     type: 'string'
                 });
         })
+        .command('anu', '变量定义没有被使用检索', function(yargs){
+            return yargs.reset().option('path', {
+                alias : 'p',
+                demand: true,
+                describe: '扫描路径',
+                type: 'string'
+            })
+        })
 		.help('h')
 		.alias('h', 'help');
 }
