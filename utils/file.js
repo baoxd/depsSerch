@@ -65,7 +65,7 @@ exports.getAllFile = function(sourcepath) {
                     const currFilePath = path.join(sourcepath, file)
                     const fileStat = fs.statSync(currFilePath);
 
-                    if (fileStat.isFile() && !exports.isIgnorePath(ignorePaths, sourcepath)) {
+                    if (fileStat.isFile() && !exports.isIgnorePath(ignorePaths, currFilePath)) {
                         ret.push(currFilePath);
                     } else if (fileStat.isDirectory()) {
                         ret = ret.concat(exports.getAllFile(currFilePath));
