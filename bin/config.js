@@ -27,6 +27,11 @@ module.exports = function(yargs) {
                 demand: true,
                 describe: '扫描路径',
                 type: 'string'
+            }).option('func', {
+                type: 'boolean',
+                describe: '是否替换函数, 如果需要替换，建议函数注释中没有"{"或者"}"',
+                alias: 'f',
+                default: false,
             })
         })
 		.help('h')

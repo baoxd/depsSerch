@@ -26,6 +26,17 @@ exports.readFile = function(file, cb) {
     }
 }
 
+exports.writeFile = function(file, code, cb) {
+    try{
+        fs.chmodSync(file, parseInt('0755', 8));
+        fs.writeFileSync(file, code);
+        cb && cb();
+    }catch(e) {
+        console.log('文件写入出错');
+        console.log(e);
+    }
+}
+
 /**
  * @param {*} dirs 
  * @param {*} path 
