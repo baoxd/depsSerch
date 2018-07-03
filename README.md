@@ -6,18 +6,20 @@
 * 删除代码中无用的变量（慎用）
 
 该工具适用于项目越做越大，不好管理，需要净化代码，净化项目文件的时候，或者其他场合。
-* 注意，使用anu命令时 需要项目中存在eslint配置文件，之所以没有给出默认的配置，我相信规范的项目代码是需要eslint的
+
+*注意*：使用anu命令时需要项目中存在eslint配置文件，之所以没有给出默认的配置，我相信规范的项目代码是需要eslint的
 
 
 ## 使用
 
-1. 安装依赖
+* 安装依赖
 
 ```
 npm i -g depsserch
+
 ```
 
-2. 命令ds
+* 命令ds
  
 ```
 coan ds
@@ -38,16 +40,13 @@ coan ds
 -s: 信息显示类型, a: 显示所有；o: 是显示没有被依赖的文件
 -i: 入口文件
 
-当添加入口文件参数，会分析那些文件可以删除， 否则只分析文件依赖情况
+```
+当添加入口文件参数，会分析那些文件可以删除， 否则只分析文件依赖情况。
+
+
+* 命令anu
 
 ```
-
-
-3. 命令anu
-
-```
-变量定义没有被使用检索, 通过扫描文件，分析出那些变量没有被使用，并自动删除变量（慎用），默认不会检索函数变量，因为函数变量的定义不好获取，如果使用建议函数定义中不要在注释中或者字符串中存在 "{","}" 字符
-
 选项：
   --version   显示版本号                                          [布尔]
   -h, --help  显示帮助信息                                        [布尔]
@@ -55,9 +54,11 @@ coan ds
   --func, -f  是否替换函数, 如果需要替换，建议函数注释中没有"{"或者"}"
                                                                  [布尔] [默认值: false]
 ```
+该命令的作用是：分析出那些变量没有被使用，并自动删除变量（慎用）。这里的变量包括var、const、import或者定义的函数。默认不会检索函数变量，因为函数变量的定义不好获取（函数中可能包含注释，或者字符串），如果使用建议函数定义中不要在注释中或者字符串中存在 "{","}" 字符
 
 
-4. 示例
+
+* 示例1 -- ds命令
 
 ```
 baoxiangdongdeMacBook-Pro:depsSerch baoxiangdong$ coan ds -p . -a ./webpack.dev.js -s o -i ./test/
@@ -67,6 +68,8 @@ DIR: /Users/baoxiangdong/Documents/github/depsSerch/bin
 FILE: /Users/baoxiangdong/Documents/github/depsSerch/bin/coan.js
 FILE: /Users/baoxiangdong/Documents/github/depsSerch/bin/config.js
 DIR: /Users/baoxiangdong/Documents/github/depsSerch/lib
+FILE: /Users/baoxiangdong/Documents/github/depsSerch/lib/anu.js
+FILE: /Users/baoxiangdong/Documents/github/depsSerch/lib/config.js
 FILE: /Users/baoxiangdong/Documents/github/depsSerch/lib/ds.js
 FILE: /Users/baoxiangdong/Documents/github/depsSerch/lib/parse.js
 DIR: /Users/baoxiangdong/Documents/github/depsSerch/test
@@ -74,6 +77,7 @@ FILE: /Users/baoxiangdong/Documents/github/depsSerch/test/A.js
 FILE: /Users/baoxiangdong/Documents/github/depsSerch/test/B.js
 FILE: /Users/baoxiangdong/Documents/github/depsSerch/test/C.js
 FILE: /Users/baoxiangdong/Documents/github/depsSerch/test/D.js
+FILE: /Users/baoxiangdong/Documents/github/depsSerch/test/common.js
 DIR: /Users/baoxiangdong/Documents/github/depsSerch/test/css
 FILE: /Users/baoxiangdong/Documents/github/depsSerch/test/css/test.scss
 DIR: /Users/baoxiangdong/Documents/github/depsSerch/test/imgs
@@ -81,24 +85,41 @@ FILE: /Users/baoxiangdong/Documents/github/depsSerch/test/imgs/demo.jpg
 FILE: /Users/baoxiangdong/Documents/github/depsSerch/test/index.js
 DIR: /Users/baoxiangdong/Documents/github/depsSerch/utils
 FILE: /Users/baoxiangdong/Documents/github/depsSerch/utils/file.js
+FILE: /Users/baoxiangdong/Documents/github/depsSerch/utils/utils.js
 FILE: /Users/baoxiangdong/Documents/github/depsSerch/webpack.dev.js
 --------------------- 扫描结束 ---------------------
 --------------------- 依赖情况 ---------------------
 没有被依赖的文件: 
-  /Users/baoxiangdong/Documents/github/depsSerch/bin/coan
-  /Users/baoxiangdong/Documents/github/depsSerch/test/A
-  /Users/baoxiangdong/Documents/github/depsSerch/test/C
-  /Users/baoxiangdong/Documents/github/depsSerch/test/css/test
-  /Users/baoxiangdong/Documents/github/depsSerch/test/imgs/demo
-  /Users/baoxiangdong/Documents/github/depsSerch/test/index
-  /Users/baoxiangdong/Documents/github/depsSerch/webpack.dev
+  /Users/baoxiangdong/Documents/github/depsSerch/bin/coan.js
+  /Users/baoxiangdong/Documents/github/depsSerch/test/A.js
+  /Users/baoxiangdong/Documents/github/depsSerch/test/C.js
+  /Users/baoxiangdong/Documents/github/depsSerch/test/common.js
+  /Users/baoxiangdong/Documents/github/depsSerch/test/css/test.scss
+  /Users/baoxiangdong/Documents/github/depsSerch/test/imgs/demo.jpg
+  /Users/baoxiangdong/Documents/github/depsSerch/test/index.js
+  /Users/baoxiangdong/Documents/github/depsSerch/webpack.dev.js
 可删除的文件
-  /Users/baoxiangdong/Documents/github/depsSerch/bin/coan
-  /Users/baoxiangdong/Documents/github/depsSerch/bin/config
-  /Users/baoxiangdong/Documents/github/depsSerch/lib/ds
-  /Users/baoxiangdong/Documents/github/depsSerch/utils/file
-  /Users/baoxiangdong/Documents/github/depsSerch/lib/parse
-  /Users/baoxiangdong/Documents/github/depsSerch/webpack.dev
+  /Users/baoxiangdong/Documents/github/depsSerch/bin/coan.js
+  /Users/baoxiangdong/Documents/github/depsSerch/bin/config.js
+  /Users/baoxiangdong/Documents/github/depsSerch/lib/ds.js
+  /Users/baoxiangdong/Documents/github/depsSerch/lib/anu.js
+  /Users/baoxiangdong/Documents/github/depsSerch/utils/file.js
+  /Users/baoxiangdong/Documents/github/depsSerch/lib/config.js
+  /Users/baoxiangdong/Documents/github/depsSerch/utils/utils.js
+  /Users/baoxiangdong/Documents/github/depsSerch/lib/parse.js
+  /Users/baoxiangdong/Documents/github/depsSerch/webpack.dev.js
+可删除文件数:9
+可删除文件大小:26.4033203125KB
+```
+
+* 示例2 -- anu命令
+
+```
+baoxiangdongdeMacBook-Pro:depsSerch baoxiangdong$ coan anu -p ./test/
+/Users/baoxiangdong/Documents/github/depsSerch/test/B.js
+删除的内容：
+import D from './D';
+
 ```
 
 ![./test/imgs/demo.jpg](./test/imgs/demo.jpg)
