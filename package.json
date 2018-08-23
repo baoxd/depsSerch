@@ -1,6 +1,6 @@
 {
   "name": "depsserch",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "文件依赖检索，可以检索文件夹所有文件的依赖情况",
   "main": "index.js",
   "repository": {
@@ -16,7 +16,7 @@
     "node",
     "cli"
   ],
-  "author": "baoxd",
+  "author": "baoxiangdong",
   "license": "MIT",
   "dependencies": {
     "eslint": "^4.19.1",
