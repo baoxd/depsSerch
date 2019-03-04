@@ -38,3 +38,12 @@ exports.isArray = function(arr) {
 exports.isObject = function(obj) {
     return Object.prototype.toString.call(obj) === '[object Object]';
 }
+
+/**
+ * 是否是字符串
+ * @param  {[type]}  str [description]
+ * @return {Boolean}     [description]
+ */
+exports.isString = function(str) {
+    return typeof str === 'string';
+}

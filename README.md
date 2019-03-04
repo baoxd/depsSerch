@@ -27,12 +27,13 @@ coan ds
 文件依赖检索
 
 选项：
-  --version        显示版本号                                       [布尔]
-  -h, --help       显示帮助信息                                     [布尔]
-  --path, -p       扫描路径                                         [字符串] [必需]
-  --aliaspath, -a  alias配置文件路径                                [字符串]
-  --show, -s       信息显示类型, a: 显示所有；o: 是显示没有被依赖的文件 [字符串]
-  --input, -i      入口文件,支持多入口, 以逗号分隔
+  --version        显示版本号                                           [布尔]
+  -h, --help       显示帮助信息                                         [布尔]
+  --path, -p       扫描路径                                            [字符串] [必需]
+  --aliaspath, -a  alias配置文件路径                                    [字符串]
+  --show, -s       信息显示类型, a: 显示所有；o: 是显示没有被依赖的文件       [字符串]
+  --input, -i      项目入口文件文件夹路径                                 [字符串]
+  --config, -c     配置文件路径                                         [字符串]
 
 参数解释:
 -p: 要扫描的文件夹路径
@@ -41,7 +42,20 @@ coan ds
 -i: 入口文件
 
 ```
-当添加入口文件参数，会分析那些文件可以删除， 否则只分析文件依赖情况。
+当添加入口文件参数，会分析那些文件可以删除， 否则只分析文件依赖情况。config配置如下：
+
+```
+module.exports = {
+    aliaspath: './webpack.dev.js',
+    show: 'o',
+    input: [
+        './test/A.js',
+        './test/B.js',
+    ]
+}
+
+```
+可以配置三个参数：aliaspath、show、input
 
 
 * 命令anu

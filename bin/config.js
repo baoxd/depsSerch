@@ -19,6 +19,10 @@ module.exports = function(yargs) {
                     alias: 'i',
                     describe: '项目入口文件文件夹路径',
                     type: 'string'
+                }).option('config', {
+                    alias: 'c',
+                    describe: '配置文件路径',
+                    type: 'string'
                 });
         })
         .command('anu', '变量定义没有被使用检索', function(yargs){
