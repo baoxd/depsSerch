@@ -1,6 +1,6 @@
 {
   "name": "depsserch",
-  "version": "0.1.7",
+  "version": "0.1.9",
   "description": "文件依赖检索、可删除文件检索，可以检索文件夹所有文件的依赖情况和判断哪些文件可以删除",
   "main": "index.js",
   "repository": {
